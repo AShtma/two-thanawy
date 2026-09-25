@@ -1,0 +1,2436 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اختبار الكتروني1 - الصف الثاني الثانوي - HTMA</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+    body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #e0f7ff 0%, #f0e6ff 50%, #ffe6f5 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    body::before {
+        content: '';
+        position: fixed;
+        top: -200px; right: -200px;
+        width: 500px; height: 500px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 107, 157, 0.15), transparent 70%);
+        animation: floatCircle 20s ease-in-out infinite;
+        pointer-events: none;
+    }
+
+    body::after {
+        content: '';
+        position: fixed;
+        bottom: -200px; left: -200px;
+        width: 500px; height: 500px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(77, 150, 255, 0.15), transparent 70%);
+        animation: floatCircle 25s ease-in-out infinite reverse;
+        pointer-events: none;
+    }
+
+    @keyframes floatCircle {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(-50px, 50px) scale(1.2); }
+    }
+
+    #startPage {
+        width: 100%;
+        max-width: 850px;
+        background: #ffffff;
+        border-radius: 30px;
+        padding: 45px 50px;
+        box-shadow: 0 20px 60px rgba(139, 92, 246, 0.15), 0 0 0 1px rgba(139, 92, 246, 0.08);
+        animation: fadeInUp 0.8s ease;
+        position: relative;
+        z-index: 1;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .htma-header { text-align: center; margin-bottom: 30px; }
+
+    .htma-text {
+        font-family: 'Arial Black', 'Segoe UI', sans-serif;
+        font-size: 5.5rem;
+        font-weight: 900;
+        letter-spacing: 6px;
+        background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #F59E0B 100%);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradientShift 4s ease infinite;
+        display: inline-block;
+        line-height: 1;
+        margin-bottom: 12px;
+        filter: drop-shadow(0 4px 12px rgba(139, 92, 246, 0.25));
+    }
+
+    @keyframes gradientShift {
+        0%, 100% { background-position: 0% center; }
+        50% { background-position: 100% center; }
+    }
+
+    .htma-subtitle { font-size: 1.25rem; font-weight: 800; color: #4C1D95; margin-bottom: 6px; }
+    .htma-tagline { font-size: 0.85rem; font-weight: 700; color: #8B5CF6; letter-spacing: 3px; text-transform: uppercase; }
+
+    .teacher-bar {
+        background: linear-gradient(135deg, #F3E8FF 0%, #FCE7F3 100%);
+        border: 2px solid #E9D5FF;
+        border-radius: 20px;
+        padding: 18px 25px;
+        text-align: center;
+        margin-bottom: 25px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .teacher-bar::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+        animation: shine 3s ease-in-out infinite;
+    }
+
+    @keyframes shine {
+        0% { left: -100%; }
+        100% { left: 100%; }
+    }
+
+    .teacher-name {
+        font-family: 'Georgia', serif;
+        font-size: 1.8rem;
+        font-weight: 900;
+        font-style: italic;
+        color: #6D28D9;
+        margin-bottom: 6px;
+        display: inline-block;
+        animation: teacherMove 2s ease-in-out infinite;
+        position: relative;
+        z-index: 1;
+    }
+
+    @keyframes teacherMove {
+        0%, 100% { transform: translateY(0) scale(1); text-shadow: 0 0 15px rgba(139, 92, 246, 0.4); color: #6D28D9; }
+        50% { transform: translateY(-6px) scale(1.05); text-shadow: 0 0 30px rgba(236, 72, 153, 0.7); color: #EC4899; }
+    }
+
+    .teacher-phone {
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: #DB2777;
+        direction: ltr;
+        animation: phonePulse 2s ease-in-out infinite;
+        position: relative;
+        z-index: 1;
+    }
+
+    @keyframes phonePulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+    }
+
+    .section-box {
+        background: #F9FAFB;
+        border: 2px solid #E5E7EB;
+        border-radius: 20px;
+        padding: 25px;
+        margin-bottom: 20px;
+        transition: 0.3s;
+    }
+
+    .section-box:hover {
+        border-color: #C4B5FD;
+        background: #FAF5FF;
+        box-shadow: 0 8px 25px rgba(139, 92, 246, 0.1);
+    }
+
+    .section-title {
+        font-size: 1.15rem;
+        font-weight: 900;
+        color: #4C1D95;
+        margin-bottom: 18px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 12px;
+        border-bottom: 2px dashed #E9D5FF;
+    }
+
+    .section-title .icon {
+        width: 38px; height: 38px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        background: linear-gradient(135deg, #8B5CF6, #EC4899);
+        box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .form-grid input {
+        width: 100%;
+        padding: 15px 18px;
+        background: #ffffff;
+        border: 2px solid #E5E7EB;
+        border-radius: 14px;
+        color: #1F2937;
+        font-size: 1rem;
+        font-weight: 600;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    .form-grid input:focus {
+        border-color: #8B5CF6;
+        box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.12);
+        background: #FAF5FF;
+    }
+
+    .mode-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .mode-btn {
+        position: relative;
+        padding: 18px 50px 18px 20px;
+        font-size: 1.1rem;
+        font-weight: 900;
+        border-radius: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+        border: 3px solid transparent;
+        color: #fff;
+        font-family: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .mode-btn.online-btn { background: linear-gradient(135deg, #10B981, #059669); box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3); }
+    .mode-btn.offline-btn { background: linear-gradient(135deg, #F59E0B, #EA580C); box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3); }
+
+    .mode-btn:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); }
+
+    .mode-btn.active-mode {
+        border-color: #FBBF24;
+        box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.35), 0 12px 30px rgba(0, 0, 0, 0.25);
+        transform: translateY(-4px) scale(1.02);
+    }
+
+    .mode-btn .check-mark {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: #FBBF24;
+        color: #1F2937;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.3rem;
+        font-weight: 900;
+        box-shadow: 0 4px 12px rgba(251, 191, 36, 0.6);
+        animation: checkPop 0.4s ease;
+        z-index: 5;
+    }
+
+    .mode-btn.active-mode .check-mark { display: flex; }
+
+    @keyframes checkPop {
+        0% { transform: scale(0) rotate(-180deg); }
+        70% { transform: scale(1.2) rotate(10deg); }
+        100% { transform: scale(1) rotate(0deg); }
+    }
+
+    .start-btn {
+        width: 100%;
+        padding: 22px;
+        font-size: 1.35rem;
+        font-weight: 900;
+        color: #ffffff;
+        background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+        border: none;
+        border-radius: 18px;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        letter-spacing: 1.5px;
+        margin-top: 25px;
+        font-family: inherit;
+    }
+
+    .start-btn:hover { transform: translateY(-5px); box-shadow: 0 20px 45px rgba(139, 92, 246, 0.55); }
+
+    #quizPage {
+        display: none;
+        width: 100%;
+        max-width: 1300px;
+        height: 92vh;
+        background: #ffffff;
+        border-radius: 25px;
+        overflow: hidden;
+        box-shadow: 0 25px 70px rgba(139, 92, 246, 0.2);
+        animation: fadeInUp 0.8s ease;
+    }
+
+    .quiz-layout { display: flex; height: 100%; flex-direction: column; }
+    .quiz-main { display: flex; flex: 1; overflow: hidden; }
+
+    .sidebar {
+        width: 300px;
+        background: linear-gradient(180deg, #8B5CF6 0%, #7C3AED 100%);
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        overflow-y: auto;
+        color: #fff;
+    }
+
+    .sidebar h3 {
+        text-align: center;
+        margin-bottom: 18px;
+        font-size: 1.2rem;
+        padding-bottom: 12px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+        font-weight: 900;
+    }
+
+    .questions-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 20px; }
+
+    .q-num {
+        width: 42px; height: 42px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 2px solid rgba(255, 255, 255, 0.25);
+        color: #fff;
+        font-weight: 900;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 0.9rem;
+    }
+
+    .q-num:hover { background: rgba(255, 255, 255, 0.3); transform: scale(1.1); }
+    .q-num.answered { background: linear-gradient(135deg, #FBBF24, #10B981); border-color: transparent; box-shadow: 0 0 15px rgba(251, 191, 36, 0.7); }
+    .q-num.current { border: 3px solid #FBBF24; box-shadow: 0 0 20px rgba(251, 191, 36, 0.9); transform: scale(1.15); background: rgba(255, 255, 255, 0.3); }
+
+    .sidebar-info {
+        margin-top: auto;
+        text-align: center;
+        padding-top: 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        font-weight: 900;
+        font-size: 1.05rem;
+    }
+
+    .progress-bar {
+        width: 100%; height: 10px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        margin: 10px 0;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #FBBF24, #10B981);
+        border-radius: 10px;
+        transition: width 0.4s ease;
+        width: 0%;
+        box-shadow: 0 0 12px rgba(251, 191, 36, 0.6);
+    }
+
+    .timer-box {
+        background: rgba(255, 255, 255, 0.15);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 14px;
+        padding: 12px;
+        text-align: center;
+        margin-top: 12px;
+        transition: 0.3s;
+    }
+
+    .timer-box.warning { background: rgba(239, 68, 68, 0.35); border-color: #FCA5A5; animation: timerPulse 1s ease-in-out infinite; }
+
+    @keyframes timerPulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+
+    .timer-box .timer-label { font-size: 0.85rem; color: #FDE68A; font-weight: 900; margin-bottom: 4px; }
+    .timer-box .timer-value { font-size: 1.6rem; font-weight: 900; color: #fff; direction: ltr; letter-spacing: 2px; font-family: 'Courier New', monospace; }
+
+    .current-points-box {
+        background: rgba(255, 255, 255, 0.15);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 14px;
+        padding: 10px;
+        text-align: center;
+        margin-top: 12px;
+        transition: 0.3s;
+    }
+
+    .current-points-box.decreasing { animation: pointsDecrease 0.5s ease; }
+
+    @keyframes pointsDecrease {
+        0% { background: rgba(239, 68, 68, 0.5); transform: scale(1.1); }
+        100% { background: rgba(255, 255, 255, 0.15); transform: scale(1); }
+    }
+
+    .current-points-box .label { font-size: 0.8rem; color: #FDE68A; font-weight: 900; }
+    .current-points-box .value { font-size: 1.4rem; font-weight: 900; color: #fff; direction: ltr; }
+
+    .question-area { flex: 1; display: flex; flex-direction: column; padding: 25px 30px; overflow-y: auto; background: #F9FAFB; }
+
+    .question-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
+
+    .question-counter {
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #8B5CF6, #EC4899);
+        padding: 10px 20px;
+        border-radius: 25px;
+        box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
+    }
+
+    .difficulty-badge { padding: 8px 18px; border-radius: 20px; font-size: 0.9rem; font-weight: 900; color: #fff; }
+    .difficulty-badge.medium { background: linear-gradient(135deg, #3B82F6, #06B6D4); }
+    .difficulty-badge.hard { background: linear-gradient(135deg, #EC4899, #DB2777); }
+
+    .question-text {
+        color: #1F2937;
+        font-size: 1.25rem;
+        font-weight: 800;
+        line-height: 1.8;
+        margin-bottom: 20px;
+        padding: 22px;
+        background: #ffffff;
+        border-radius: 18px;
+        border-right: 6px solid #8B5CF6;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        white-space: pre-line;
+    }
+
+    .options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+
+    .option {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 16px 20px;
+        background: #ffffff;
+        border: 2px solid #E5E7EB;
+        border-radius: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #1F2937;
+        font-size: 1.05rem;
+        font-weight: 700;
+    }
+
+    .option:hover { background: #FAF5FF; border-color: #A78BFA; transform: translateX(-6px); }
+
+    .option.selected {
+        background: linear-gradient(135deg, #8B5CF6, #EC4899);
+        border-color: transparent;
+        color: #ffffff;
+        box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+        transform: translateX(-6px);
+    }
+
+    .option .letter {
+        width: 40px; height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background: #F3E8FF;
+        color: #7C3AED;
+        font-weight: 900;
+        flex-shrink: 0;
+    }
+
+    .option.selected .letter { background: #ffffff; color: #EC4899; }
+
+    .nav-buttons { display: flex; justify-content: space-between; gap: 15px; margin-top: auto; padding-top: 15px; }
+
+    .nav-btn {
+        padding: 14px 35px;
+        font-size: 1rem;
+        font-weight: 900;
+        color: #fff;
+        background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 6px 20px rgba(139, 92, 246, 0.3);
+        font-family: inherit;
+    }
+
+    .nav-btn:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(139, 92, 246, 0.5); }
+    .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .submit-wrapper { text-align: center; margin-top: 12px; }
+
+    .submit-btn {
+        padding: 18px 60px;
+        font-size: 1.15rem;
+        font-weight: 900;
+        color: #fff;
+        background: linear-gradient(135deg, #10B981, #059669);
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+        font-family: inherit;
+    }
+
+    .submit-btn:hover:not(:disabled) { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(16, 185, 129, 0.6); }
+    .submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .teacher-footer {
+        background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+        color: #fff;
+        padding: 14px 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1rem;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .teacher-footer .name { font-family: 'Georgia', serif; font-weight: 900; font-style: italic; font-size: 1.2rem; color: #FBBF24; }
+    .teacher-footer .phone { direction: ltr; font-weight: 900; color: #FBBF24; }
+
+    #rankPage {
+        display: none;
+        width: 100%;
+        max-width: 900px;
+        background: linear-gradient(160deg, #0F172A 0%, #1E1B4B 50%, #4C1D95 100%);
+        border-radius: 30px;
+        padding: 30px;
+        box-shadow: 0 25px 80px rgba(15, 23, 42, 0.6);
+        animation: rankPop 0.5s ease;
+        max-height: 94vh;
+        overflow-y: auto;
+        position: relative;
+        z-index: 5;
+        color: #fff;
+    }
+
+    @keyframes rankPop {
+        from { opacity: 0; transform: scale(0.85); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    #confetti { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; display: none; }
+
+    .confetti-piece {
+        position: absolute;
+        width: 12px; height: 12px;
+        border-radius: 2px;
+        animation: fall 3s linear forwards;
+    }
+
+    @keyframes fall {
+        0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+
+    .rank-header { text-align: center; margin-bottom: 20px; }
+
+    .rank-header h2 {
+        font-size: 2.2rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #FBBF24, #FDE68A, #F59E0B);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradientShift 2s ease infinite;
+        margin-bottom: 6px;
+    }
+
+    .rank-header p { color: #C4B5FD; font-weight: 800; font-size: 0.9rem; }
+
+    .podium-area {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 12px;
+        margin: 25px 0 30px;
+        padding: 20px 10px 0;
+        position: relative;
+        min-height: 260px;
+    }
+
+    .podium-slot {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        max-width: 180px;
+        animation: podiumRise 0.8s ease backwards;
+    }
+
+    .podium-slot:nth-child(1) { animation-delay: 0.4s; }
+    .podium-slot:nth-child(2) { animation-delay: 0.1s; }
+    .podium-slot:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes podiumRise {
+        from { opacity: 0; transform: translateY(60px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .podium-slot.me .podium-avatar {
+        box-shadow: 0 0 0 4px #F472B6, 0 0 30px rgba(244, 114, 182, 0.8);
+        animation: avatarGlow 1.5s ease-in-out infinite;
+    }
+
+    @keyframes avatarGlow {
+        0%, 100% { box-shadow: 0 0 0 4px #F472B6, 0 0 30px rgba(244, 114, 182, 0.8); }
+        50% { box-shadow: 0 0 0 8px rgba(244, 114, 182, 0.5), 0 0 50px rgba(244, 114, 182, 1); }
+    }
+
+    .podium-avatar {
+        width: 65px; height: 65px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.6rem;
+        font-weight: 900;
+        color: #fff;
+        border: 4px solid #fff;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        margin-bottom: 8px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .podium-medal { font-size: 2.2rem; margin-bottom: 4px; animation: medalBounce 1.5s ease-in-out infinite; }
+
+    @keyframes medalBounce {
+        0%, 100% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-8px) scale(1.15); }
+    }
+
+    .podium-name {
+        font-weight: 900;
+        font-size: 0.95rem;
+        text-align: center;
+        margin-bottom: 4px;
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #fff;
+        padding: 0 5px;
+    }
+
+    .podium-name .you-tag {
+        background: linear-gradient(135deg, #EC4899, #DB2777);
+        color: #fff;
+        font-size: 0.65rem;
+        padding: 2px 8px;
+        border-radius: 10px;
+        margin-right: 5px;
+        animation: youPulse 1s ease-in-out infinite;
+    }
+
+    @keyframes youPulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+    }
+
+    .podium-points { font-size: 1.1rem; font-weight: 900; color: #FBBF24; direction: ltr; margin-bottom: 8px; }
+
+    .podium-block {
+        width: 100%;
+        border-radius: 12px 12px 0 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.5rem;
+        font-weight: 900;
+        position: relative;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-bottom: none;
+    }
+
+    .podium-slot.place-1 .podium-block { height: 100px; background: linear-gradient(180deg, #FBBF24, #F59E0B); color: #78350F; }
+    .podium-slot.place-2 .podium-block { height: 75px; background: linear-gradient(180deg, #D1D5DB, #9CA3AF); color: #374151; }
+    .podium-slot.place-3 .podium-block { height: 55px; background: linear-gradient(180deg, #FB923C, #EA580C); color: #7C2D12; }
+
+    .rank-arrow {
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1rem;
+        font-weight: 900;
+        padding: 2px 8px;
+        border-radius: 8px;
+        animation: arrowPulse 1s ease-in-out infinite;
+        z-index: 3;
+    }
+
+    .rank-arrow.up { color: #fff; background: #10B981; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.6); }
+    .rank-arrow.down { color: #fff; background: #EF4444; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.6); }
+
+    @keyframes arrowPulse {
+        0%, 100% { transform: translateX(-50%) scale(1); }
+        50% { transform: translateX(-50%) scale(1.2); }
+    }
+
+    .runners-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+
+    .runner-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 2px solid rgba(255, 255, 255, 0.12);
+        animation: slideIn 0.5s ease backwards;
+        position: relative;
+        transition: 0.3s;
+    }
+
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .runner-item.me { border: 3px dashed #F472B6; background: rgba(244, 114, 182, 0.15); }
+
+    .runner-rank {
+        width: 36px; height: 36px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.15);
+        font-weight: 900;
+        font-size: 0.95rem;
+        flex-shrink: 0;
+    }
+
+    .runner-avatar {
+        width: 38px; height: 38px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 900;
+        font-size: 1rem;
+        color: #fff;
+        border: 2px solid #fff;
+        flex-shrink: 0;
+    }
+
+    .runner-info { flex: 1; min-width: 0; }
+
+    .runner-name {
+        font-weight: 900;
+        font-size: 0.95rem;
+        margin-bottom: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .runner-name .you-tag {
+        background: linear-gradient(135deg, #EC4899, #DB2777);
+        color: #fff;
+        font-size: 0.65rem;
+        padding: 2px 8px;
+        border-radius: 10px;
+        margin-right: 5px;
+    }
+
+    .runner-sub { font-size: 0.75rem; color: #C4B5FD; font-weight: 700; }
+
+    .runner-progress {
+        width: 100%;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        margin-top: 6px;
+        overflow: hidden;
+    }
+
+    .runner-progress-fill { height: 100%; border-radius: 6px; transition: width 0.8s ease; }
+
+    .runner-points { font-weight: 900; font-size: 1.1rem; color: #FBBF24; direction: ltr; flex-shrink: 0; }
+
+    .others-section { margin-top: 15px; padding-top: 15px; border-top: 2px dashed rgba(255, 255, 255, 0.2); }
+
+    .others-title { text-align: center; color: #C4B5FD; font-weight: 900; font-size: 0.9rem; margin-bottom: 12px; }
+
+    .others-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(55px, 1fr)); gap: 8px; }
+
+    .other-num {
+        padding: 10px 6px;
+        text-align: center;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 2px solid rgba(255, 255, 255, 0.12);
+        font-weight: 900;
+        font-size: 0.95rem;
+        color: #E9D5FF;
+        animation: slideIn 0.4s ease backwards;
+    }
+
+    .other-num.me {
+        background: linear-gradient(135deg, #EC4899, #DB2777);
+        border-color: #F9A8D4;
+        color: #fff;
+        box-shadow: 0 0 15px rgba(236, 72, 153, 0.6);
+        animation: meNumPulse 1.2s ease-in-out infinite;
+    }
+
+    @keyframes meNumPulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+    }
+
+    .rank-empty { text-align: center; padding: 40px 20px; color: #C4B5FD; font-weight: 800; }
+
+    .rank-close-btn {
+        width: 100%;
+        padding: 18px;
+        font-size: 1.15rem;
+        font-weight: 900;
+        color: #fff;
+        background: linear-gradient(135deg, #F59E0B, #EA580C);
+        border: none;
+        border-radius: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+        font-family: inherit;
+        margin-top: 15px;
+    }
+
+    .rank-close-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(245, 158, 11, 0.65); }
+
+    #resultPage {
+        display: none;
+        width: 100%;
+        max-width: 900px;
+        background: #ffffff;
+        border-radius: 30px;
+        padding: 40px;
+        box-shadow: 0 25px 70px rgba(139, 92, 246, 0.2);
+        animation: fadeInUp 0.8s ease;
+        max-height: 92vh;
+        overflow-y: auto;
+    }
+
+    .result-header { text-align: center; margin-bottom: 20px; }
+    .result-header h2 { font-size: 2rem; font-weight: 900; color: #4C1D95; }
+
+    .result-score {
+        font-size: 5rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #8B5CF6, #EC4899, #F59E0B);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin: 15px 0;
+        text-align: center;
+        animation: gradientShift 3s ease infinite;
+    }
+
+    .result-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0; }
+
+    .stat-box { border-radius: 18px; padding: 18px; text-align: center; border: 2px solid; }
+    .stat-box:nth-child(1) { background: #ECFDF5; border-color: #10B981; }
+    .stat-box:nth-child(2) { background: #FEF2F2; border-color: #EF4444; }
+    .stat-box:nth-child(3) { background: #EFF6FF; border-color: #3B82F6; }
+
+    .stat-box .value { font-size: 2.2rem; font-weight: 900; }
+    .stat-box:nth-child(1) .value { color: #10B981; }
+    .stat-box:nth-child(2) .value { color: #EF4444; }
+    .stat-box:nth-child(3) .value { color: #3B82F6; }
+    .stat-box .label { color: #6B7280; font-size: 0.9rem; margin-top: 5px; font-weight: 800; }
+
+    .motivation { text-align: center; font-size: 1.3rem; font-weight: 900; padding: 20px; border-radius: 18px; margin: 20px 0; }
+    .motivation.excellent { background: #ECFDF5; color: #065F46; border: 2px solid #10B981; }
+    .motivation.good { background: #FFFBEB; color: #92400E; border: 2px solid #F59E0B; }
+    .motivation.need-improve { background: #FEF2F2; color: #991B1B; border: 2px solid #EF4444; }
+
+    .wrong-answers { margin-top: 25px; }
+    .wrong-answers h3 { color: #DC2626; margin-bottom: 15px; font-size: 1.25rem; font-weight: 900; }
+
+    .wrong-item { background: #FEF2F2; border: 2px solid #FECACA; border-radius: 16px; padding: 18px; margin-bottom: 15px; }
+    .wrong-item .q-text { font-weight: 800; color: #1F2937; margin-bottom: 10px; line-height: 1.6; }
+    .wrong-item .wrong-ans { color: #fff; font-weight: 800; padding: 10px 15px; background: linear-gradient(135deg, #EF4444, #DC2626); border-radius: 10px; margin-bottom: 8px; display: block; font-size: 0.95rem; }
+    .wrong-item .correct-ans { color: #fff; font-weight: 800; padding: 10px 15px; background: linear-gradient(135deg, #10B981, #059669); border-radius: 10px; display: block; font-size: 0.95rem; }
+
+    .teacher-result-footer {
+        margin-top: 30px;
+        padding: 25px;
+        background: linear-gradient(135deg, #8B5CF6, #EC4899);
+        border-radius: 22px;
+        text-align: center;
+        color: #fff;
+    }
+
+    .teacher-result-footer .animated-name {
+        font-family: 'Georgia', serif;
+        font-size: 2rem;
+        font-weight: 900;
+        font-style: italic;
+        color: #FBBF24;
+        animation: resultTeacherMove 1.8s ease-in-out infinite;
+        display: inline-block;
+    }
+
+    @keyframes resultTeacherMove {
+        0%, 100% { transform: translateY(0) scale(1) rotate(-2deg); }
+        50% { transform: translateY(-8px) scale(1.08) rotate(2deg); }
+    }
+
+    .teacher-result-footer .phone { font-size: 1.15rem; color: #fff; margin-top: 10px; direction: ltr; font-weight: 900; }
+
+    .result-actions { display: flex; justify-content: center; gap: 15px; margin-top: 25px; flex-wrap: wrap; }
+
+    .result-btn { padding: 15px 32px; font-size: 1rem; font-weight: 900; color: #fff; border: none; border-radius: 30px; cursor: pointer; transition: 0.3s; font-family: inherit; }
+
+    .restart-btn { background: linear-gradient(135deg, #F59E0B, #EA580C); }
+    .send-btn { background: linear-gradient(135deg, #25D366, #128C7E); }
+    .rank-btn { background: linear-gradient(135deg, #8B5CF6, #7C3AED); }
+
+    .submitted-banner {
+        margin: 20px 0;
+        padding: 18px 20px;
+        background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+        border: 2px solid #10B981;
+        border-radius: 18px;
+        text-align: center;
+        color: #065F46;
+        font-size: 1.15rem;
+        font-weight: 900;
+        animation: submittedPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes submittedPulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+        50% { box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); }
+    }
+
+    #loadingOverlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(15, 23, 42, 0.9);
+        z-index: 10000;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: #fff;
+        gap: 15px;
+    }
+
+    .spinner {
+        width: 60px; height: 60px;
+        border: 6px solid rgba(255, 255, 255, 0.2);
+        border-top-color: #FBBF24;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    #sendingOverlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(15, 23, 42, 0.92);
+        z-index: 10001;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: #fff;
+        gap: 15px;
+        text-align: center;
+        padding: 20px;
+    }
+
+    #sendingOverlay.active { display: flex; }
+
+    #sendingOverlay .send-spinner {
+        width: 70px; height: 70px;
+        border: 6px solid rgba(255, 255, 255, 0.15);
+        border-top-color: #10B981;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    #sendingOverlay .send-title {
+        font-size: 1.3rem;
+        font-weight: 900;
+        color: #FBBF24;
+    }
+
+    #sendingOverlay .send-sub {
+        font-size: 1rem;
+        color: #C4B5FD;
+    }
+
+    .toast {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, #10B981, #059669);
+        color: #fff;
+        padding: 16px 32px;
+        border-radius: 14px;
+        font-size: 1.05rem;
+        font-weight: 900;
+        z-index: 11000;
+        box-shadow: 0 10px 30px rgba(16, 185, 129, 0.5);
+        animation: slideUpToast 0.4s ease;
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .toast.show { display: block; }
+    .toast.warn { background: linear-gradient(135deg, #F59E0B, #EA580C); box-shadow: 0 10px 30px rgba(245, 158, 11, 0.5); }
+
+    #sentModal {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(15, 23, 42, 0.92);
+        z-index: 10002;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+    #sentModal.active { display: flex; }
+    #sentModal .sent-box {
+        background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+        border: 3px solid #10B981;
+        border-radius: 28px;
+        padding: 40px 45px;
+        text-align: center;
+        max-width: 460px;
+        box-shadow: 0 25px 80px rgba(16, 185, 129, 0.45);
+        animation: rankPop 0.5s ease;
+    }
+    #sentModal .sent-icon { font-size: 4.5rem; line-height: 1; margin-bottom: 12px; }
+    #sentModal .sent-title { font-size: 1.6rem; font-weight: 900; color: #065F46; margin-bottom: 8px; }
+    #sentModal .sent-sub { font-size: 1.05rem; font-weight: 800; color: #047857; }
+
+    #studentCard {
+        position: fixed;
+        top: 0; left: -10000px;
+        z-index: 0;
+        width: 560px;
+        padding: 28px;
+        background: linear-gradient(160deg, #0F172A 0%, #1E1B4B 55%, #4C1D95 100%);
+        color: #fff;
+        direction: rtl;
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    }
+    #studentCard .sc-brand { font-size: 2.4rem; font-weight: 900; color: #FBBF24; letter-spacing: 4px; }
+    #studentCard .sc-sub { font-size: 0.95rem; color: #C4B5FD; margin-bottom: 18px; }
+    #studentCard .sc-title { font-size: 1.25rem; font-weight: 900; margin-bottom: 16px; }
+    #studentCard .sc-row { display: flex; justify-content: space-between; gap: 12px; background: rgba(255,255,255,0.08); border-radius: 12px; padding: 11px 16px; margin-bottom: 8px; font-size: 1.05rem; }
+    #studentCard .sc-row b { color: #FBBF24; }
+    #studentCard .sc-stats { display: flex; gap: 10px; margin: 16px 0 8px; }
+    #studentCard .sc-stat { flex: 1; border-radius: 14px; padding: 14px 6px; font-weight: 900; }
+    #studentCard .sc-stat .v { font-size: 1.9rem; }
+    #studentCard .sc-stat .l { font-size: 0.85rem; opacity: 0.95; }
+    #studentCard .sc-ok { background: linear-gradient(135deg, #10B981, #059669); }
+    #studentCard .sc-bad { background: linear-gradient(135deg, #EF4444, #DC2626); }
+    #studentCard .sc-pct { background: linear-gradient(135deg, #8B5CF6, #7C3AED); }
+    #studentCard .sc-foot { margin-top: 14px; font-size: 0.9rem; color: #C4B5FD; }
+
+    .score-line { text-align: center; font-size: 1.35rem; font-weight: 900; color: #4C1D95; margin: -4px 0 14px; }
+
+    @keyframes slideUpToast {
+        from { transform: translate(-50%, 40px); opacity: 0; }
+        to { transform: translate(-50%, 0); opacity: 1; }
+    }
+
+    @media (max-width: 900px) {
+        .quiz-main { flex-direction: column; }
+        .sidebar { width: 100%; max-height: 220px; }
+        .questions-grid { grid-template-columns: repeat(8, 1fr); }
+        .q-num { width: 34px; height: 34px; font-size: 0.75rem; }
+        .form-grid { grid-template-columns: 1fr; }
+        .htma-text { font-size: 4rem; }
+        .result-stats { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+        #startPage { padding: 30px 25px; }
+        .htma-text { font-size: 3rem; letter-spacing: 4px; }
+        .teacher-name { font-size: 1.3rem; }
+        .questions-grid { grid-template-columns: repeat(6, 1fr); }
+        .question-text { font-size: 1rem; }
+        .option { padding: 12px; font-size: 0.9rem; }
+        .nav-btn { padding: 12px 20px; font-size: 0.9rem; }
+        .result-score { font-size: 3.5rem; }
+        .result-btn { padding: 12px 22px; font-size: 0.9rem; }
+        .mode-buttons { grid-template-columns: 1fr; }
+        #rankPage { padding: 20px 15px; }
+        .rank-header h2 { font-size: 1.5rem; }
+        .podium-area { min-height: 220px; gap: 6px; }
+        .podium-avatar { width: 50px; height: 50px; font-size: 1.2rem; }
+        .podium-medal { font-size: 1.6rem; }
+        .podium-name { font-size: 0.75rem; }
+        .podium-points { font-size: 0.9rem; }
+        .podium-slot.place-1 .podium-block { height: 80px; }
+        .podium-slot.place-2 .podium-block { height: 60px; }
+        .podium-slot.place-3 .podium-block { height: 45px; }
+    }
+</style>
+</head>
+<body>
+
+<div id="loadingOverlay">
+    <div class="spinner"></div>
+    <div>⏳ جاري الاتصال بالسيرفر...</div>
+</div>
+
+<div id="sendingOverlay">
+    <div class="send-spinner"></div>
+    <div class="send-title">📤 جاري إرسال النتيجة لمستر علاء سليم...</div>
+    <div class="send-sub" id="sendStatusText">يتم تجهيز الصورة والإرسال</div>
+</div>
+
+<div id="sentModal">
+    <div class="sent-box">
+        <div class="sent-icon">✅</div>
+        <div class="sent-title">تم إرسال النتيجة للمعلم</div>
+        <div class="sent-sub">MR / Alaa Selim</div>
+    </div>
+</div>
+
+<div class="toast" id="toast">✅ تم تسليم النتيجة لمستر علاء سليم</div>
+
+<div id="studentCard">
+    <div class="sc-brand">HTMA</div>
+    <div class="sc-sub">🏆 لتعليم البرمجة والذكاء الاصطناعي 🏆</div>
+    <div class="sc-title">📘 نتيجة الاختبار الالكتروني - الصف الثاني الثانوي</div>
+    <div class="sc-row"><span>👤 الاسم</span><b id="scName"></b></div>
+    <div class="sc-row"><span>🏫 المدرسة</span><b id="scSchool"></b></div>
+    <div class="sc-row"><span>🌍 المحافظة</span><b id="scGov"></b></div>
+    <div class="sc-row"><span>📞 التليفون</span><b id="scPhone"></b></div>
+    <div class="sc-row"><span>💻 النمط</span><b id="scMode"></b></div>
+    <div class="sc-stats">
+        <div class="sc-stat sc-ok"><div class="v" id="scCorrect"></div><div class="l">صحيحة</div></div>
+        <div class="sc-stat sc-bad"><div class="v" id="scWrong"></div><div class="l">خاطئة</div></div>
+        <div class="sc-stat sc-pct"><div class="v" id="scPercent"></div><div class="l">النسبة</div></div>
+    </div>
+    <div class="sc-row"><span>📝 الدرجة</span><b id="scScore"></b></div>
+    <div class="sc-row"><span>💎 النقاط</span><b id="scPoints"></b></div>
+    <div class="sc-foot" id="scDate"></div>
+</div>
+
+<div id="confetti"></div>
+
+<div id="startPage">
+    <div class="htma-header">
+        <div class="htma-text">HTMA</div>
+        <div class="htma-subtitle">🏆 لتعليم البرمجة والذكاء الاصطناعي 🏆</div>
+        <div class="htma-tagline">SOFTWARE & PROGRAMMING SOLUTIONS</div>
+    </div>
+
+    <div class="teacher-bar">
+        <div class="teacher-name">MR / Alaa Selim</div>
+        <div class="teacher-phone">📞 01005089656</div>
+    </div>
+
+    <div class="section-box">
+        <div class="section-title">
+            <span class="icon">👤</span>
+            <span>بيانات الطالب</span>
+        </div>
+        <div class="form-grid">
+            <input type="text" id="studentName" placeholder="الاسم الكامل" required>
+            <input type="text" id="studentSchool" placeholder="المدرسة" required>
+            <input type="text" id="studentGovernorate" placeholder="المحافظة" required>
+            <input type="tel" id="studentPhone" placeholder="رقم التليفون" required>
+        </div>
+    </div>
+
+    <div class="section-box">
+        <div class="section-title">
+            <span class="icon">💻</span>
+            <span>اختر نمط الدراسة مع مستر علاء</span>
+        </div>
+        <div class="mode-buttons">
+            <button type="button" class="mode-btn online-btn" data-mode="Online" id="modeOnlineBtn">
+                <span>🌐 Online</span>
+                <span class="check-mark">✓</span>
+            </button>
+            <button type="button" class="mode-btn offline-btn" data-mode="Offline" id="modeOfflineBtn">
+                <span>📴 Offline</span>
+                <span class="check-mark">✓</span>
+            </button>
+        </div>
+    </div>
+
+    <button class="start-btn" id="startQuizBtn">🚀 ابدأ الاختبار</button>
+</div>
+
+<div id="quizPage">
+    <div class="quiz-layout">
+        <div class="quiz-main">
+            <div class="sidebar">
+                <h3>📋 الأسئلة</h3>
+                <div class="questions-grid" id="questionsGrid"></div>
+                <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+                <div class="sidebar-info"><div id="progressText">0 / 34</div></div>
+
+                <div class="timer-box" id="timerBox">
+                    <div class="timer-label">⏱️ الوقت المتبقي</div>
+                    <div class="timer-value" id="timerValue">40:00</div>
+                </div>
+
+                <div class="current-points-box" id="currentPointsBox">
+                    <div class="label">💎 نقاط السؤال الحالي</div>
+                    <div class="value" id="currentPoints">10</div>
+                </div>
+            </div>
+
+            <div class="question-area">
+                <div class="question-header">
+                    <div class="question-counter" id="questionCounter">السؤال 1 من 34</div>
+                    <div class="difficulty-badge medium" id="difficultyBadge">متوسط</div>
+                </div>
+                <div class="question-text" id="questionText"></div>
+                <div class="options" id="optionsContainer"></div>
+                <div class="nav-buttons">
+                    <button class="nav-btn" id="prevBtn">⬅ السابق</button>
+                    <button class="nav-btn" id="nextBtn">التالي ➡</button>
+                </div>
+                <div class="submit-wrapper">
+                    <button class="submit-btn" id="submitBtn" disabled>✅ تسليم الاختبار</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="teacher-footer">
+            <div class="name">👨‍🏫 MR / Alaa Selim</div>
+            <div class="phone">📞 01005089656</div>
+        </div>
+    </div>
+</div>
+
+<div id="rankPage">
+    <div class="rank-header">
+        <h2>🏆 ترتيب الأوائل</h2>
+        <p id="rankSubtitle">ترتيب نهائي بناءً على نتائج جميع الطلاب</p>
+    </div>
+
+    <div class="podium-area" id="podiumArea"></div>
+    <div class="runners-list" id="runnersList"></div>
+    <div class="others-section" id="othersSection" style="display:none;">
+        <div class="others-title">👥 باقي المتسابقين (بالترتيب)</div>
+        <div class="others-grid" id="othersGrid"></div>
+    </div>
+
+    <button class="rank-close-btn" id="rankCloseBtn">متابعة ➡</button>
+</div>
+
+<div id="resultPage">
+    <div class="result-header"><h2>🎉 تم التسليم بنجاح</h2></div>
+
+    <div class="submitted-banner" id="submittedBanner">
+        ✅ تم إرسال النتيجة لمستر علاء سليم على واتساب
+    </div>
+
+    <div class="result-score" id="resultScore">0%</div>
+    <div class="score-line" id="scoreLine">الدرجة: 0 من 34</div>
+
+    <div class="result-stats">
+        <div class="stat-box"><div class="value" id="correctCount">0</div><div class="label">إجابات صحيحة</div></div>
+        <div class="stat-box"><div class="value" id="wrongCount">0</div><div class="label">إجابات خاطئة</div></div>
+        <div class="stat-box"><div class="value" id="totalCount">34</div><div class="label">إجمالي الأسئلة</div></div>
+    </div>
+
+    <div class="motivation excellent" id="pointsMsg">💎 نقاطك: 0</div>
+    <div class="motivation" id="motivationMsg"></div>
+
+    <div class="wrong-answers" id="wrongAnswers">
+        <h3>❌ الأسئلة الخطأ والإجابات الصحيحة</h3>
+        <div id="wrongList"></div>
+    </div>
+
+    <div class="teacher-result-footer">
+        <div class="animated-name">MR / Alaa Selim</div>
+        <div class="phone">📞 01005089656</div>
+    </div>
+
+    <div class="result-actions">
+        <button class="result-btn rank-btn" id="viewRankBtn">🏆 عرض قائمة الأوائل</button>
+        <button class="result-btn send-btn" id="sendResultBtn">📱 إرسال النتيجة للمعلم</button>
+        <button class="result-btn restart-btn" id="restartBtn">🔄 إعادة الاختبار</button>
+    </div>
+</div>
+
+<script>
+/* ============================================================
+   ⚙️ إعدادات
+   ============================================================ */
+const SEND_CONFIG = {
+    teacherPhone: "201026635109",           // 20 = مصر، بدون + وبدون 0 في البداية
+    callMeBotApiKey: "4409977",       // ← المفتاح اللي وصلك
+    autoSend: true,                          // إرسال تلقائي بعد التسليم
+    useProxy: true,                          // استخدام proxy لتجاوز CORS
+    proxyUrl: "https://corsproxy.io/?"       // proxy عام (يمكن استبداله)
+};
+const hasKey = (k) => !!k && !/^YOUR_/i.test(k);
+
+/* ============================================================
+   📚 الأسئلة — 34 سؤال مستخرج من صفحات الكتاب
+   ============================================================ */
+const questions = [
+    // ========== صفحة 8 ==========
+    {
+        q: "من بين الخيارات التالية (أ-د) اختر الخيار الذي يرتب مراحل تطور تكنولوجيا المعلومات (IT) بالترتيب الزمني الصحيح:",
+        options: [
+            "بداية ظهور الحاسب – تسويق الإنترنت تجارياً – انتشار الحوسبة السحابية – ظهور الهواتف الذكية",
+            "بداية ظهور الحاسب – تسويق الإنترنت تجارياً – ظهور الهواتف الذكية – انتشار الحوسبة السحابية",
+            "تسويق الإنترنت تجارياً – بداية ظهور الحاسب – انتشار الحوسبة السحابية – ظهور الهواتف الذكية",
+            "تسويق الإنترنت تجارياً – بداية ظهور الحاسب – ظهور الهواتف الذكية – انتشار الحوسبة السحابية"
+        ],
+        answer: 1,
+        difficulty: "medium"
+    },
+    {
+        q: "قانون مور هو الملاحظة التجريبية القائلة إن \"عدد الترانزستورات في الدائرة المتكاملة يتضاعف تقريباً كل عامين\".",
+        options: ["صحيحة", "خاطئة"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "يواجه استمرار تصغير مكونات الدوائر تحديات هندسية وفيزيائية تبطن الاتجاه الذي وصفه قانون مور.",
+        options: ["صحيحة", "خاطئة"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "شبكات التواصل الاجتماعي فعالة جداً في نشر المعلومات بسرعة.",
+        options: ["صحيحة", "خاطئة"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "التجارة الإلكترونية تعني شراء السلع من المتاجر الفعلية باستخدام النقد.",
+        options: ["صحيحة", "خاطئة"],
+        answer: 1,
+        difficulty: "medium"
+    },
+    {
+        q: "طابق كل وصف (1-3) مع التقنية الأنسب من الخيارات أدناه (أ-ج):\n1) تقنية تشغيل معلومات رقمية فوق صور من العالم الحقيقي\n2) تقنية تستخدم الذكاء الاصطناعي لقيادة مركبة بأقل تدخل بشري\n3) تقنية تتيح للمستخدمين الاندماج في فضاء افتراضي يولد الحاسوب",
+        options: [
+            "[الواقع المعزز] [القيادة الذاتية] [الواقع الافتراضي]",
+            "[الواقع الافتراضي] [القيادة الذاتية] [الواقع المعزز]",
+            "[القيادة الذاتية] [الواقع المعزز] [الواقع الافتراضي]",
+            "[الواقع المعزز] [الواقع الافتراضي] [القيادة الذاتية]"
+        ],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "ما اسم الملاحظة التجريبية القائلة إن \"عدد الترانزستورات في الدائرة المتكاملة يتضاعف تقريباً كل عامين\"؟",
+        options: ["قانون جوردون مور", "قانون ديفيد هاوس", "قانون تشارلز باباج", "قانون آلان تورينج"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "ما المصطلح الذي يشير إلى بيع السلع والخدمات وشراؤها عبر الإنترنت؟",
+        options: ["التجارة الإلكترونية", "التسويق الرقمي", "الحوسبة السحابية", "التجارة التقليدية"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "ما المصطلح الذي يصف أداء الشخص عمله من المنزل أو من موقع بعيد عبر الإنترنت؟",
+        options: ["العمل عن بُعد", "العمل الحر", "العمل الجماعي", "العمل التطوعي"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "ما المصطلح الذي يشير إلى نظام المدفوعات بالنقود الإلكترونية ورموز QR وغيرها، دون استخدام النقد؟",
+        options: ["الدفع الإلكتروني", "الدفع النقدي", "الدفع الآجل", "الدفع بالبطاقات فقط"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "ما المصطلح الذي يشير إلى التقنية التي تستخدم الذكاء الاصطناعي لقيادة مركبة بأقل تدخل بشري؟",
+        options: ["القيادة الذاتية", "الواقع الافتراضي", "الواقع المعزز", "الحوسبة الكمومية"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "صنف كل مثال من (1-4) ضمن الفئة الأنسب: تقنيات في الحياة اليومية – تقنيات في الصناعة والاقتصاد – تقنيات في الرعاية الصحية والتعليم:\n1) شراء منتجات عبر التسويق الإلكتروني\n2) الدفع مقابل المشتريات بتطبيق دفع على الهاتف الذكي\n3) مشاركة الصور مع الأصدقاء على شبكات التواصل الاجتماعي\n4) شركة تُطبّق نظام العمل من المنزل",
+        options: [
+            "الحياة اليومية – الاقتصاد – الحياة اليومية – الصناعة",
+            "الاقتصاد – الحياة اليومية – الحياة اليومية – الصناعة",
+            "الصناعة – الاقتصاد – الحياة اليومية – الحياة اليومية",
+            "الحياة اليومية – الحياة اليومية – الحياة اليومية – الصناعة"
+        ],
+        answer: 3,
+        difficulty: "hard"
+    },
+    {
+        q: "من بين الخيارات التالية (أ-د) اختر الخيار الذي لا يُعد وصفاً مناسباً لتقنية ناشئة:",
+        options: [
+            "القيادة الذاتية تستخدم الذكاء الاصطناعي للمساعدة على قيادة مركبة",
+            "الواقع المعزز تقنية تضيف معلومات رقمية فوق صور من العالم الحقيقي",
+            "الواقع الافتراضي تقنية تحسّن بشكل كبير سرعة معالجة الحاسب",
+            "الحوسبة الكمومية تحسّن الحسابات الصعبة على الحواسب التقليدية"
+        ],
+        answer: 2,
+        difficulty: "hard"
+    },
+
+    // ========== صفحة 9 ==========
+    {
+        q: "أي من التطورات التالية ظهرت خلال الأربعينيات والخمسينيات من القرن العشرين؟",
+        options: ["الهواتف الذكية", "الحواسيب الإلكترونية الضخمة", "الحوسبة السحابية", "الواقع الافتراضي"],
+        answer: 1,
+        difficulty: "medium"
+    },
+    {
+        q: "أي مما يلي يُعد من التقنيات الناشئة (Emerging Technologies)؟",
+        options: ["الذكاء الاصطناعي", "إنترنت الأشياء", "الحوسبة الكمومية", "كل ما سبق"],
+        answer: 3,
+        difficulty: "medium"
+    },
+    {
+        q: "أي من التطورات التالية أدت إلى ظهور الحوسبة السحابية؟",
+        options: ["توسع الشبكات", "الحواسيب الشخصية", "الإنترنت عالي السرعة", "كل ما سبق"],
+        answer: 3,
+        difficulty: "medium"
+    },
+
+    // ========== صفحة 15 ==========
+    {
+        q: "التعلم الآلي هو إحدى التقنيات التي تجعل الذكاء الاصطناعي يعمل.",
+        options: ["صحيحة", "خاطئة"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "التعلم العميق تقنية مختلفة تماماً عن التعلم الآلي.",
+        options: ["صحيحة", "خاطئة"],
+        answer: 1,
+        difficulty: "medium"
+    },
+    {
+        q: "الذكاء الاصطناعي التوليدي يستخدم التعلم العميق لتوليد بيانات جديدة.",
+        options: ["صحيحة", "خاطئة"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "الذكاء الاصطناعي والتعلم الآلي لهما المعنى نفسه.",
+        options: ["صحيحة", "خاطئة"],
+        answer: 1,
+        difficulty: "medium"
+    },
+    {
+        q: "طابق كل وصف (1-3) مع المصطلح الأنسب من الخيارات أدناه (أ-ج):\n1) تقنية تعلم الأنماط من البيانات لإجراء التنبؤات وإصدار الأحكام\n2) تقنية تستخدم الشبكات العصبية لتعلم أنماط معقدة\n3) تقنية ذكاء اصطناعي تولد بيانات جديدة مثل النصوص والصور",
+        options: [
+            "[التعلم الآلي] [التعلم العميق] [الذكاء الاصطناعي التوليدي]",
+            "[التعلم العميق] [التعلم الآلي] [الذكاء الاصطناعي التوليدي]",
+            "[الذكاء الاصطناعي التوليدي] [التعلم الآلي] [التعلم العميق]",
+            "[التعلم الآلي] [الذكاء الاصطناعي التوليدي] [التعلم العميق]"
+        ],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "أي من العبارات التالية تصف العلاقة بين الذكاء الاصطناعي والتعلم الآلي والتعلم العميق والذكاء الاصطناعي التوليدي؟",
+        options: [
+            "الذكاء الاصطناعي يشمل التعلم الآلي، والتعلم الآلي يشمل التعلم العميق، والذكاء الاصطناعي التوليدي يستخدم التعلم العميق",
+            "الذكاء الاصطناعي التوليدي هو نفسه التعلم العميق",
+            "التعلم الآلي يشمل الذكاء الاصطناعي",
+            "لا توجد علاقة بينهم"
+        ],
+        answer: 0,
+        difficulty: "hard"
+    },
+
+    // ========== صفحة 16 ==========
+    {
+        q: "من بين الخيارات التالية (أ-د) اختر الخيار الذي يصف بشكل صحيح العلاقة بين الذكاء الاصطناعي والتعلم الآلي والتعلم العميق والذكاء الاصطناعي التوليدي:",
+        options: [
+            "الذكاء الاصطناعي > التعلم الآلي > التعلم العميق > الذكاء الاصطناعي التوليدي",
+            "التعلم الآلي > الذكاء الاصطناعي > التعلم العميق > الذكاء الاصطناعي التوليدي",
+            "الذكاء الاصطناعي التوليدي > التعلم العميق > التعلم الآلي > الذكاء الاصطناعي",
+            "الذكاء الاصطناعي التوليدي > التعلم الآلي > التعلم العميق > الذكاء الاصطناعي"
+        ],
+        answer: 0,
+        difficulty: "hard"
+    },
+    {
+        q: "من بين الخيارات التالية (أ-د) اختر الخيار الذي لا يُعد مناسباً على الإطلاق للذكاء الاصطناعي التوليدي:",
+        options: ["ChatGPT", "أدوات توليد الصور", "مرشح الرسائل المزعجة", "أدوات توليد الفيديو"],
+        answer: 2,
+        difficulty: "hard"
+    },
+
+    // ========== صفحة 25 ==========
+    {
+        q: "طابق كل وصف (1-4) مع المصطلح الأنسب من الخيارات أدناه (أ-د):\n1) نظام توصية\n2) المساعد الصوتي\n3) الترجمة الآلية\n4) التعرف على الوجه",
+        options: [
+            "نظام توصية – المساعد الصوتي – الترجمة الآلية – التعرف على الوجه",
+            "التعرف على الوجه – الترجمة الآلية – المساعد الصوتي – نظام توصية",
+            "الترجمة الآلية – نظام توصية – التعرف على الوجه – المساعد الصوتي",
+            "المساعد الصوتي – التعرف على الوجه – نظام توصية – الترجمة الآلية"
+        ],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "الذكاء الاصطناعي بارع في الاستدلال الاحتمالي والتنبؤ استناداً إلى البيانات.",
+        options: ["صحيحة", "خاطئة"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "الذكاء الاصطناعي بارع في التعرف على الصور والصوت.",
+        options: ["صحيحة", "خاطئة"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "لا بأس بترك الأحكام الأخلاقية بالكامل للذكاء الاصطناعي.",
+        options: ["صحيحة", "خاطئة"],
+        answer: 1,
+        difficulty: "medium"
+    },
+    {
+        q: "يمكن أن تصبح أحكام الذكاء الاصطناعي غير دقيقة عندما تكون بيانات التدريب متحيزة.",
+        options: ["صحيحة", "خاطئة"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "ما هو المصطلح الخاص بالنظام الذي يتنبأ بالتفضيلات من بيانات السلوك السابق ويعرض التوصيات؟",
+        options: ["نظام التوصية", "المساعد الصوتي", "الترجمة الآلية", "التعرف على الوجه"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "ما هو المصطلح الخاص بتقنية الذكاء الاصطناعي التي تتعرف على الصوت وتفهم الأوامر وتنفذها؟",
+        options: ["المساعد الصوتي", "نظام التوصية", "الترجمة الآلية", "التعرف على الوجه"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "في أي صناعة تُستخدم أنظمة الذكاء الاصطناعي للتشخيص بالصور؟",
+        options: ["الرعاية الصحية", "الزراعة", "التصنيع", "الخدمات اللوجستية"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "في التصنيع، ما المصطلح الذي يصف استخدام البيانات للتنبؤ بأعطال الآلات أو المعدات قبل وقوعها؟",
+        options: ["الصيانة التنبؤية", "الصيانة الدورية", "الصيانة الوقائية", "الصيانة الطارئة"],
+        answer: 0,
+        difficulty: "hard"
+    },
+
+    // ========== صفحة 35 ==========
+    {
+        q: "التمييز الخوارزمي ناتج عن تحيز في مخرجات الذكاء الاصطناعي قد ينشأ من البيانات أو تصميم النظام أو طريقة استخدامه، وقد يؤدي إلى نتائج غير عادلة.",
+        options: ["صحيحة", "خاطئة"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "حتى لو كانت عملية اتخاذ القرار في الذكاء الاصطناعي غير واضحة، لا توجد مشكلة طالما أن النتيجة صحيحة.",
+        options: ["صحيحة", "خاطئة"],
+        answer: 1,
+        difficulty: "medium"
+    },
+    {
+        q: "الذكاء الاصطناعي القابل للتفسير (XAI) هو تقنية تتيح للبشر فهم منطق الذكاء الاصطناعي.",
+        options: ["صحيحة", "خاطئة"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "عندما يتخذ الذكاء الاصطناعي حكماً خاطئاً، فإن من هو المسؤول قد تم تحديده بوضوح بالفعل.",
+        options: ["صحيحة", "خاطئة"],
+        answer: 1,
+        difficulty: "medium"
+    },
+    {
+        q: "طابق كل وصف (1-4) مع مبدأ أساسي من مبادئ أخلاقيات الذكاء الاصطناعي من الخيارات أدناه (أ-د):\n1) عدم التمييز ضد أي شخص أو مجموعة بعينها\n2) إتاحة معلومات واضحة ومناسبة عن النظام واستخدامه وعملية اتخاذ القرار وحدوده\n3) التعامل مع المعلومات الشخصية بشكل مناسب وحماية الخصوصية\n4) تحديد الجهات المسؤولة عن نتائج الذكاء الاصطناعي وإمكان محاسبتها",
+        options: [
+            "[العدالة] [الشفافية] [حماية الخصوصية] [المساءلة]",
+            "[الشفافية] [العدالة] [المساءلة] [حماية الخصوصية]",
+            "[حماية الخصوصية] [المساءلة] [العدالة] [الشفافية]",
+            "[المساءلة] [حماية الخصوصية] [الشفافية] [العدالة]"
+        ],
+        answer: 0,
+        difficulty: "hard"
+    },
+
+    // ========== صفحة 36 ==========
+    {
+        q: "من الخيارات التالية (أ-د)، اختر الخيار الذي ليس سبباً مناسباً للتحيز الخوارزمي:",
+        options: [
+            "بيانات التدريب متحيزة",
+            "انعكاس نزاعات تمييزية سابقة في البيانات",
+            "سرعة معالجة الحاسوب بطيئة",
+            "هناك بيانات غير كافية عن سمات معينة"
+        ],
+        answer: 2,
+        difficulty: "hard"
+    },
+    {
+        q: "أي مما يلي يمثل قضايا خصوصية مرتبطة بالذكاء الاصطناعي؟",
+        options: [
+            "يتم التعرف على الأفراد وتتبعهم من خلال تقنية التعرف على الوجه",
+            "تُجمع بيانات السلوك عبر الإنترنت وتحلل بكميات كبيرة",
+            "الذكاء الاصطناعي ينشئ أعمالاً إبداعية",
+            "تحسين سرعة حوسبة الذكاء الاصطناعي"
+        ],
+        answer: 0,
+        difficulty: "hard"
+    },
+
+    // ========== صفحة 37 ==========
+    {
+        q: "من الخيارات التالية (أ-د)، اختر الخيار الذي يصف بشكل صحيح القضايا الأخلاقية المتعلقة بالذكاء الاصطناعي:",
+        options: [
+            "لا توجد قضايا أخلاقية متعلقة بالذكاء الاصطناعي",
+            "التحيز الخوارزمي ناتج عن سرعة معالجة الذكاء الاصطناعي",
+            "يمكن أن يتسبب التحيز في بيانات التدريب في تحيز تمييزي في أحكام الذكاء الاصطناعي",
+            "حتى لو كانت عملية اتخاذ القرار في الذكاء الاصطناعي غير واضحة، لا توجد مشكلة بالنسبة للمستخدمين"
+        ],
+        answer: 2,
+        difficulty: "hard"
+    },
+    {
+        q: "ما المصطلح الذي يصف نضج في نظام ذكاء اصطناعي قد يؤدي إلى نتائج غير عادلة أو ضارة؟",
+        options: ["التحيز الخوارزمي", "الشفافية", "المساءلة", "العدالة"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "ما المصطلح الخاص بالتقنية التي تتيح للبشر فهم سبب اتخاذ الذكاء الاصطناعي لقرار معين؟",
+        options: ["الذكاء الاصطناعي القابل للتفسير (XAI)", "التعلم العميق", "التعلم الآلي", "الذكاء الاصطناعي التوليدي"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "من بين المبادئ الأساسية لأخلاقيات الذكاء الاصطناعي، ما هو المصطلح الخاص بعدم التمييز ضد أي شخص أو مجموعة بعينها؟",
+        options: ["العدالة", "الشفافية", "حماية الخصوصية", "المساءلة"],
+        answer: 0,
+        difficulty: "medium"
+    },
+    {
+        q: "من بين المبادئ الأساسية لأخلاقيات الذكاء الاصطناعي، ما هو المصطلح الخاص بالتعامل مع المعلومات الشخصية بشكل مناسب؟",
+        options: ["حماية الخصوصية", "العدالة", "الشفافية", "المساءلة"],
+        answer: 0,
+        difficulty: "medium"
+    }
+];
+
+/* ============================================================
+   🧠 المتغيرات
+   ============================================================ */
+let currentQuestion = 0;
+let userAnswers = new Array(questions.length).fill(null);
+let studentData = {};
+let selectedMode = null;
+let finalResult = { correct: 0, wrong: 0, percent: 0, wrongList: [], points: 0, total: 0, auto: false };
+
+const QUIZ_DURATION = 40 * 60;
+const BASE_POINTS = 10;
+const MIN_POINTS = 2;
+
+let timeLeft = QUIZ_DURATION;
+let timerInterval = null;
+let quizStartTime = null;
+let lastMyRank = null;
+let liveUnsubscribe = null;
+
+let todaySession = new Date().toLocaleDateString('en-CA', { timeZone: 'Africa/Cairo' });
+
+let STUDENT_ID = localStorage.getItem('htma_student_id');
+if (!STUDENT_ID) {
+    STUDENT_ID = 'stu_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    localStorage.setItem('htma_student_id', STUDENT_ID);
+}
+
+window.todaySession = todaySession;
+
+let isSubmitting = false;
+let studentCardCanvas = null;
+let studentCardBlob = null;
+let sendStatus = 'manual';
+
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+const withTimeout = (p, ms) => Promise.race([p, new Promise(r => setTimeout(r, ms))]);
+
+function saveFinalScore(points, correct, percent) {
+    if (window.__saveFinalScore) return window.__saveFinalScore(points, correct, percent);
+    return Promise.resolve();
+}
+
+function playRankSound() {
+    try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const notes = [523.25, 659.25, 783.99, 1046.50];
+        notes.forEach((freq, i) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.value = freq;
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            const t = ctx.currentTime + i * 0.12;
+            gain.gain.setValueAtTime(0, t);
+            gain.gain.linearRampToValueAtTime(0.15, t + 0.02);
+            gain.gain.exponentialRampToValueAtTime(0.001, t + 0.4);
+            osc.start(t);
+            osc.stop(t + 0.4);
+        });
+    } catch(e) {}
+}
+
+function showConfetti() {
+    const container = document.getElementById('confetti');
+    if (!container) return;
+    container.innerHTML = '';
+    container.style.display = 'block';
+    const colors = ['#FBBF24', '#EC4899', '#8B5CF6', '#10B981', '#3B82F6', '#F97316'];
+    for (let i = 0; i < 80; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'confetti-piece';
+        piece.style.left = Math.random() * 100 + '%';
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.animationDelay = Math.random() * 2 + 's';
+        piece.style.animationDuration = (2 + Math.random() * 2) + 's';
+        container.appendChild(piece);
+    }
+    setTimeout(() => { container.style.display = 'none'; container.innerHTML = ''; }, 5000);
+}
+
+function showToast(msg, warn = false) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.toggle('warn', warn);
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), warn ? 8000 : 4500);
+}
+
+function selectMode(mode) {
+    selectedMode = mode;
+    document.querySelectorAll('.mode-btn').forEach(btn => {
+        btn.classList.remove('active-mode');
+        if (btn.dataset.mode === mode) btn.classList.add('active-mode');
+    });
+}
+
+function startQuiz() {
+    const name = document.getElementById('studentName').value.trim();
+    const school = document.getElementById('studentSchool').value.trim();
+    const gov = document.getElementById('studentGovernorate').value.trim();
+    const phone = document.getElementById('studentPhone').value.trim();
+
+    if (!name || !school || !gov || !phone) {
+        alert('⚠️ يرجى ملء جميع البيانات أولاً');
+        return;
+    }
+    if (!selectedMode) {
+        alert('⚠️ يرجى اختيار نمط الاختبار أولاً');
+        return;
+    }
+
+    studentData = { name, school, gov, phone, mode: selectedMode };
+    window.studentData = studentData;
+    window.STUDENT_ID = STUDENT_ID;
+
+    document.getElementById('startPage').style.display = 'none';
+    document.getElementById('quizPage').style.display = 'block';
+
+    buildQuestionsGrid();
+    renderQuestion();
+    updateProgress();
+
+    quizStartTime = Date.now();
+    timeLeft = QUIZ_DURATION;
+    updateTimerDisplay();
+    startTimer();
+}
+
+function startTimer() {
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        if (timeLeft <= 0) {
+            timeLeft = 0;
+            updateTimerDisplay();
+            clearInterval(timerInterval);
+            timerInterval = null;
+            alert('⏰ انتهى الوقت! سيتم تسليم الاختبار تلقائياً');
+            autoSubmit();
+            return;
+        }
+        updateTimerDisplay();
+        updateCurrentPointsDisplay();
+    }, 1000);
+}
+
+function updateTimerDisplay() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    document.getElementById('timerValue').textContent =
+        `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    const box = document.getElementById('timerBox');
+    if (timeLeft <= 60) box.classList.add('warning');
+    else box.classList.remove('warning');
+}
+
+function getCurrentPoints() {
+    const ratio = timeLeft / QUIZ_DURATION;
+    const points = Math.round(MIN_POINTS + (BASE_POINTS - MIN_POINTS) * ratio);
+    return Math.max(MIN_POINTS, Math.min(BASE_POINTS, points));
+}
+
+function updateCurrentPointsDisplay() {
+    const pointsEl = document.getElementById('currentPoints');
+    const oldVal = parseInt(pointsEl.textContent) || BASE_POINTS;
+    const newVal = getCurrentPoints();
+    pointsEl.textContent = newVal;
+    if (newVal < oldVal) {
+        const box = document.getElementById('currentPointsBox');
+        box.classList.remove('decreasing');
+        void box.offsetWidth;
+        box.classList.add('decreasing');
+    }
+}
+
+function buildQuestionsGrid() {
+    const grid = document.getElementById('questionsGrid');
+    grid.innerHTML = '';
+    questions.forEach((_, i) => {
+        const div = document.createElement('div');
+        div.className = 'q-num';
+        div.textContent = i + 1;
+        div.onclick = () => goToQuestion(i);
+        grid.appendChild(div);
+    });
+}
+
+function renderQuestion() {
+    const q = questions[currentQuestion];
+    document.getElementById('questionCounter').textContent = `السؤال ${currentQuestion + 1} من ${questions.length}`;
+    const badge = document.getElementById('difficultyBadge');
+    if (q.difficulty === 'hard') {
+        badge.textContent = '🔥 عالي الصعوبة';
+        badge.className = 'difficulty-badge hard';
+    } else {
+        badge.textContent = '📘 متوسط';
+        badge.className = 'difficulty-badge medium';
+    }
+    document.getElementById('questionText').textContent = q.q;
+
+    const container = document.getElementById('optionsContainer');
+    container.innerHTML = '';
+    const letters = ['أ', 'ب', 'ج', 'د'];
+    q.options.forEach((opt, i) => {
+        const div = document.createElement('div');
+        div.className = 'option' + (userAnswers[currentQuestion] === i ? ' selected' : '');
+        div.innerHTML = `<span class="letter">${letters[i]}</span><span>${opt}</span>`;
+        div.onclick = () => selectOption(i);
+        container.appendChild(div);
+    });
+
+    updateNavButtons();
+    updateSidebar();
+    updateCurrentPointsDisplay();
+}
+
+function selectOption(index) {
+    userAnswers[currentQuestion] = index;
+    renderQuestion();
+    updateProgress();
+    checkAllAnswered();
+}
+
+function goToQuestion(index) {
+    currentQuestion = index;
+    renderQuestion();
+}
+
+function nextQuestion() {
+    if (userAnswers[currentQuestion] === null) {
+        alert('⚠️ يرجى اختيار إجابة أولاً قبل الانتقال للسؤال التالي');
+        return;
+    }
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        renderQuestion();
+    } else {
+        alert('✅ دي آخر سؤال! اضغط "تسليم الاختبار" لعرض النتيجة والترتيب النهائي');
+    }
+}
+
+function prevQuestion() {
+    if (currentQuestion > 0) { currentQuestion--; renderQuestion(); }
+}
+
+function updateNavButtons() {
+    document.getElementById('prevBtn').disabled = currentQuestion === 0;
+    document.getElementById('nextBtn').disabled = false;
+}
+
+function updateSidebar() {
+    const nums = document.querySelectorAll('.q-num');
+    nums.forEach((el, i) => {
+        el.classList.toggle('answered', userAnswers[i] !== null);
+        el.classList.toggle('current', i === currentQuestion);
+    });
+}
+
+function updateProgress() {
+    const answered = userAnswers.filter(a => a !== null).length;
+    const percent = (answered / questions.length) * 100;
+    document.getElementById('progressFill').style.width = percent + '%';
+    document.getElementById('progressText').textContent = `${answered} / ${questions.length}`;
+}
+
+function checkAllAnswered() {
+    const allAnswered = userAnswers.every(a => a !== null);
+    document.getElementById('submitBtn').disabled = !allAnswered;
+}
+
+function autoSubmit() {
+    userAnswers.forEach((ans, i) => { if (ans === null) userAnswers[i] = -1; });
+    submitQuiz(true);
+}
+
+function setSendingStatus(text) {
+    const el = document.getElementById('sendStatusText');
+    if (el) el.textContent = text;
+}
+
+async function submitQuiz(isAuto = false) {
+    if (isSubmitting) return;
+    if (!isAuto && !userAnswers.every(a => a !== null)) {
+        alert('⚠️ يجب الإجابة على جميع الأسئلة قبل التسليم');
+        return;
+    }
+    isSubmitting = true;
+    if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+
+    let correct = 0;
+    let wrongList = [];
+    questions.forEach((q, i) => {
+        if (userAnswers[i] === q.answer) correct++;
+        else wrongList.push({
+            question: q.q,
+            wrongAnswer: userAnswers[i] >= 0 ? q.options[userAnswers[i]] : 'لم تتم الإجابة',
+            correctAnswer: q.options[q.answer],
+            index: i + 1
+        });
+    });
+
+    const total = questions.length;
+    const percent = Math.round((correct / total) * 100);
+    const wrongCount = total - correct;
+    const points = correct * BASE_POINTS;
+
+    finalResult = { correct, wrong: wrongCount, percent, wrongList, total, points, auto: isAuto };
+    window.finalResult = finalResult;
+
+    document.getElementById('quizPage').style.display = 'none';
+    document.getElementById('resultPage').style.display = 'none';
+    document.getElementById('rankPage').style.display = 'none';
+    document.getElementById('sendingOverlay').classList.add('active');
+    setSendingStatus('💾 جاري حفظ نتيجتك...');
+
+    try { await withTimeout(saveFinalScore(points, correct, percent), 8000); }
+    catch (e) { console.error(e); }
+
+    try {
+        setSendingStatus('📸 جاري تجهيز بطاقة النتيجة...');
+        studentCardCanvas = await withTimeout(buildStudentCard(), 15000) || null;
+        studentCardBlob = studentCardCanvas ? await canvasToBlob(studentCardCanvas) : null;
+    } catch (e) {
+        console.error('فشل تجهيز الصورة:', e);
+        studentCardCanvas = null; studentCardBlob = null;
+    }
+
+    document.getElementById('sendingOverlay').classList.remove('active');
+
+    window.scrollTo(0, 0);
+    document.getElementById('rankPage').style.display = 'block';
+    showRank();
+    showConfetti();
+
+    isSubmitting = false;
+}
+
+async function buildStudentCard() {
+    const r = finalResult;
+    const set = (id, v) => { document.getElementById(id).textContent = v; };
+    set('scName', studentData.name || '-');
+    set('scSchool', studentData.school || '-');
+    set('scGov', studentData.gov || '-');
+    set('scPhone', studentData.phone || '-');
+    set('scMode', studentData.mode || '-');
+    set('scCorrect', r.correct);
+    set('scWrong', r.wrong);
+    set('scPercent', r.percent + '%');
+    set('scScore', `${r.correct} من ${r.total}`);
+    set('scPoints', r.points);
+    set('scDate', '🕒 ' + new Date().toLocaleString('ar-EG'));
+
+    if (typeof html2canvas !== 'function') return null;
+    window.scrollTo(0, 0);
+    const card = document.getElementById('studentCard');
+    card.style.left = '0';
+    try {
+        return await html2canvas(card, {
+            backgroundColor: '#0F172A',
+            scale: 2,
+            useCORS: true,
+            scrollX: 0,
+            scrollY: 0
+        });
+    } finally {
+        card.style.left = '-10000px';
+    }
+}
+
+function canvasToBlob(canvas) {
+    return new Promise(res => canvas.toBlob(b => res(b), 'image/png'));
+}
+
+function buildResultMessage(imageUrl = '') {
+    const r = finalResult;
+    let msg = `📘 نتيجة اختبار HTMA\n\n`;
+    msg += `👤 الاسم: ${studentData.name || '-'}\n`;
+    msg += `🏫 المدرسة: ${studentData.school || '-'}\n`;
+    msg += `🌍 المحافظة: ${studentData.gov || '-'}\n`;
+    msg += `📞 التليفون: ${studentData.phone || '-'}\n`;
+    msg += `💻 النمط: ${studentData.mode || '-'}\n`;
+    msg += `\n✅ صحيح: ${r.correct}/${r.total}\n`;
+    msg += `❌ خطأ: ${r.wrong}\n`;
+    msg += `📊 النسبة: ${r.percent}%\n`;
+    msg += `💎 النقاط: ${r.points}\n`;
+    msg += `🕒 الوقت: ${new Date().toLocaleString('ar-EG')}\n`;
+    if (imageUrl) msg += `\n🖼️ صورة بيانات الطالب:\n${imageUrl}`;
+    return msg;
+}
+
+async function sendResultToTeacher() {
+    const msg = buildResultMessage() + `\nمن إعداد: MR / Alaa Selim`;
+    const waUrl = `https://wa.me/${SEND_CONFIG.teacherPhone}?text=${encodeURIComponent(msg)}`;
+
+    if (studentCardBlob) {
+        const file = new File([studentCardBlob], 'HTMA-result.png', { type: 'image/png' });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            try {
+                await navigator.share({ files: [file], text: msg });
+                return;
+            } catch (e) {
+                if (e && e.name === 'AbortError') return;
+            }
+        }
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(studentCardBlob);
+        a.download = 'HTMA-result.png';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        showToast('📥 تم حفظ صورة النتيجة — أرفقها في محادثة المعلم على واتساب');
+    }
+    window.open(waUrl, '_blank');
+}
+
+/* ============================================================
+   🏆 الترتيب
+   ============================================================ */
+function getColorForName(name) {
+    const AVATAR_COLORS = [
+        'linear-gradient(135deg, #EF4444, #DC2626)',
+        'linear-gradient(135deg, #F59E0B, #D97706)',
+        'linear-gradient(135deg, #10B981, #059669)',
+        'linear-gradient(135deg, #3B82F6, #2563EB)',
+        'linear-gradient(135deg, #8B5CF6, #7C3AED)',
+        'linear-gradient(135deg, #EC4899, #DB2777)',
+        'linear-gradient(135deg, #06B6D4, #0891B2)',
+        'linear-gradient(135deg, #84CC16, #65A30D)'
+    ];
+    let hash = 0;
+    for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
+}
+
+function getInitial(name) { return (name || '?').trim().charAt(0).toUpperCase(); }
+
+function renderRank(combined) {
+    const myIdx = combined.findIndex(e => e.id === STUDENT_ID);
+    const myRank = myIdx >= 0 ? myIdx + 1 : combined.length + 1;
+
+    let arrowClass = '';
+    if (lastMyRank !== null) {
+        if (myRank < lastMyRank) arrowClass = 'up';
+        else if (myRank > lastMyRank) arrowClass = 'down';
+    }
+    lastMyRank = myRank;
+
+    const top5 = combined.slice(0, 5);
+    const others = combined.slice(5);
+    const maxPoints = combined[0]?.points || 1;
+
+    const podiumArea = document.getElementById('podiumArea');
+    podiumArea.innerHTML = '';
+
+    if (combined.length === 0) {
+        podiumArea.innerHTML = '<div class="rank-empty">لا توجد نتائج بعد 🏆</div>';
+    } else {
+        const podiumOrder = [
+            { entry: top5[1], place: 2, medal: '🥈' },
+            { entry: top5[0], place: 1, medal: '🥇' },
+            { entry: top5[2], place: 3, medal: '🥉' }
+        ];
+        podiumOrder.forEach(({ entry, place, medal }) => {
+            const slot = document.createElement('div');
+            slot.className = `podium-slot place-${place}`;
+            if (!entry) {
+                slot.style.visibility = 'hidden';
+                podiumArea.appendChild(slot);
+                return;
+            }
+            const isMe = entry.id === STUDENT_ID;
+            if (isMe) slot.classList.add('me');
+            const color = getColorForName(entry.name);
+            const initial = getInitial(entry.name);
+            const youTag = isMe ? '<span class="you-tag">أنت</span>' : '';
+            const arrow = isMe && arrowClass ?
+                `<div class="rank-arrow ${arrowClass}">${arrowClass === 'up' ? '▲' : '▼'}</div>` : '';
+
+            slot.innerHTML = `
+                ${arrow}
+                <div class="podium-medal">${medal}</div>
+                <div class="podium-avatar" style="background: ${color}">${initial}</div>
+                <div class="podium-name">${youTag}${entry.name}</div>
+                <div class="podium-points">${entry.points} 💎</div>
+                <div class="podium-block">${place}</div>
+            `;
+            podiumArea.appendChild(slot);
+        });
+    }
+
+    const runnersList = document.getElementById('runnersList');
+    runnersList.innerHTML = '';
+    [3, 4].forEach((idx, i) => {
+        const entry = top5[idx];
+        if (!entry) return;
+        const div = document.createElement('div');
+        const isMe = entry.id === STUDENT_ID;
+        div.className = 'runner-item' + (isMe ? ' me' : '');
+        div.style.animationDelay = (i * 0.1) + 's';
+        const color = getColorForName(entry.name);
+        const initial = getInitial(entry.name);
+        const youTag = isMe ? '<span class="you-tag">أنت</span>' : '';
+        const progressPercent = Math.round((entry.points / maxPoints) * 100);
+
+        div.innerHTML = `
+            <div class="runner-rank">${idx + 1}</div>
+            <div class="runner-avatar" style="background: ${color}">${initial}</div>
+            <div class="runner-info">
+                <div class="runner-name">${youTag}${entry.name}</div>
+                <div class="runner-sub">${entry.school || ''} • ${entry.correct} صحيحة</div>
+                <div class="runner-progress">
+                    <div class="runner-progress-fill" style="width: ${progressPercent}%; background: ${color}"></div>
+                </div>
+            </div>
+            <div class="runner-points">${entry.points}</div>
+        `;
+        runnersList.appendChild(div);
+    });
+
+    const othersSection = document.getElementById('othersSection');
+    const othersGrid = document.getElementById('othersGrid');
+    othersGrid.innerHTML = '';
+
+    let othersToShow = others;
+    let myExtraEntry = null;
+    if (myRank > 5) {
+        othersToShow = others.filter(e => e.id !== STUDENT_ID);
+        myExtraEntry = others.find(e => e.id === STUDENT_ID);
+    }
+
+    if (othersToShow.length > 0 || myExtraEntry) {
+        othersSection.style.display = 'block';
+        othersToShow.forEach((entry, idx) => {
+            const rankNum = 6 + idx;
+            const div = document.createElement('div');
+            div.className = 'other-num';
+            div.textContent = `#${rankNum}`;
+            div.style.animationDelay = (idx * 0.03) + 's';
+            othersGrid.appendChild(div);
+        });
+        if (myExtraEntry) {
+            const div = document.createElement('div');
+            div.className = 'other-num me';
+            div.textContent = `#${myRank} (أنت)`;
+            othersGrid.appendChild(div);
+        }
+    } else {
+        othersSection.style.display = 'none';
+    }
+}
+
+function getMyEntry() {
+    return {
+        id: STUDENT_ID,
+        name: studentData.name || '',
+        school: studentData.school || '',
+        gov: studentData.gov || '',
+        points: finalResult.points,
+        correct: finalResult.correct,
+        percent: finalResult.percent,
+        sessionId: todaySession
+    };
+}
+
+function showRank() {
+    const loadingEl = document.getElementById('loadingOverlay');
+    if (loadingEl) loadingEl.style.display = 'flex';
+
+    playRankSound();
+
+    if (liveUnsubscribe) { liveUnsubscribe(); liveUnsubscribe = null; }
+
+    let gotData = false;
+    const fallback = () => {
+        if (loadingEl) loadingEl.style.display = 'none';
+        renderRank([getMyEntry()]);
+    };
+
+    if (!window.firebaseReady || !window.db) { fallback(); return; }
+
+    const guard = setTimeout(() => { if (!gotData) fallback(); }, 6000);
+
+    let unsub = null;
+    try {
+        unsub = window.onSnapshot(window.collection(window.db, "final_scores"), (snap) => {
+            gotData = true;
+            clearTimeout(guard);
+            const combined = [];
+            snap.forEach(d => combined.push(d.data()));
+            const today = combined.filter(e => e.sessionId === todaySession);
+            if (!today.some(e => e.id === STUDENT_ID)) today.push(getMyEntry());
+            today.sort((a, b) => (b.points - a.points) || ((b.correct || 0) - (a.correct || 0)));
+            if (loadingEl) loadingEl.style.display = 'none';
+            renderRank(today);
+        }, (err) => {
+            console.error('final snapshot error:', err);
+            clearTimeout(guard);
+            if (!gotData) fallback();
+        });
+    } catch (e) {
+        console.error(e);
+        clearTimeout(guard);
+        fallback();
+        return;
+    }
+
+    liveUnsubscribe = () => { clearTimeout(guard); if (unsub) unsub(); };
+}
+
+function closeRank() {
+    if (liveUnsubscribe) { liveUnsubscribe(); liveUnsubscribe = null; }
+    document.getElementById('rankPage').style.display = 'none';
+    document.getElementById('resultPage').style.display = 'block';
+
+    document.getElementById('resultScore').textContent = `${finalResult.percent}%`;
+    document.getElementById('correctCount').textContent = finalResult.correct;
+    document.getElementById('wrongCount').textContent = finalResult.wrong;
+    document.getElementById('totalCount').textContent = finalResult.total;
+    document.getElementById('pointsMsg').textContent = `💎 نقاطك: ${finalResult.points} نقطة`;
+    document.getElementById('scoreLine').textContent = `الدرجة: ${finalResult.correct} من ${finalResult.total}`;
+
+    const banner = document.getElementById('submittedBanner');
+    banner.textContent = '📌 اضغط زر "إرسال النتيجة للمعلم" بالأسفل لإرسال صورة نتيجتك على واتساب';
+    document.getElementById('resultPage').scrollTop = 0;
+
+    const motivationEl = document.getElementById('motivationMsg');
+    if (finalResult.percent >= 90) { motivationEl.textContent = '🌟 ممتاز! أنت عبقري حقيقي!'; motivationEl.className = 'motivation excellent'; }
+    else if (finalResult.percent >= 75) { motivationEl.textContent = '👏 جيد جداً! أداء رائع!'; motivationEl.className = 'motivation excellent'; }
+    else if (finalResult.percent >= 50) { motivationEl.textContent = '💪 جيد! يمكنك التحسن أكثر!'; motivationEl.className = 'motivation good'; }
+    else { motivationEl.textContent = '📚 تحتاج لمزيد من المراجعة!'; motivationEl.className = 'motivation need-improve'; }
+
+    const wrongListEl = document.getElementById('wrongList');
+    wrongListEl.innerHTML = '';
+    if (finalResult.wrongList.length === 0) {
+        wrongListEl.innerHTML = '<p style="color:#10B981; font-weight:900; text-align:center; font-size:1.2rem;">🎉 ممتاز! لا توجد أخطاء!</p>';
+    } else {
+        finalResult.wrongList.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'wrong-item';
+            div.innerHTML = `
+                <div class="q-text">س${item.index}: ${item.question}</div>
+                <div class="wrong-ans">❌ إجابتك: ${item.wrongAnswer}</div>
+                <div class="correct-ans">✅ الصحيحة: ${item.correctAnswer}</div>
+            `;
+            wrongListEl.appendChild(div);
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('modeOnlineBtn').addEventListener('click', () => selectMode('Online'));
+    document.getElementById('modeOfflineBtn').addEventListener('click', () => selectMode('Offline'));
+
+    document.getElementById('startQuizBtn').addEventListener('click', startQuiz);
+    document.getElementById('prevBtn').addEventListener('click', prevQuestion);
+    document.getElementById('nextBtn').addEventListener('click', nextQuestion);
+    document.getElementById('submitBtn').addEventListener('click', () => submitQuiz());
+    document.getElementById('rankCloseBtn').addEventListener('click', closeRank);
+    document.getElementById('restartBtn').addEventListener('click', () => location.reload());
+    document.getElementById('sendResultBtn').addEventListener('click', sendResultToTeacher);
+
+    document.getElementById('viewRankBtn').addEventListener('click', () => {
+        document.getElementById('resultPage').style.display = 'none';
+        document.getElementById('rankPage').style.display = 'block';
+        showRank();
+    });
+
+    console.log('✅ تم ربط جميع الأحداث بنجاح');
+});
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import {
+    getFirestore,
+    collection,
+    doc,
+    setDoc,
+    deleteDoc,
+    onSnapshot,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+try {
+    const firebaseConfig = {
+        apiKey: "AIzaSyALi2aUHoetL4KibeRG1iUYpdeE3V6ctwU",
+        authDomain: "project-1848601262120620265.firebaseapp.com",
+        projectId: "project-1848601262120620265",
+        storageBucket: "project-1848601262120620265.firebasestorage.app",
+        messagingSenderId: "534166638182",
+        appId: "1:534166638182:web:551bbec09e8b21b02167a7"
+    };
+
+    const fbApp = initializeApp(firebaseConfig);
+    const firestore = getFirestore(fbApp);
+
+    window.db = firestore;
+    window.collection = collection;
+    window.doc = doc;
+    window.setDoc = setDoc;
+    window.deleteDoc = deleteDoc;
+    window.onSnapshot = onSnapshot;
+    window.serverTimestamp = serverTimestamp;
+    window.firebaseReady = true;
+
+    window.__saveLiveScore = async function(points, correct) {
+        try {
+            const sid = localStorage.getItem('htma_student_id');
+            await setDoc(doc(firestore, "live_scores", sid), {
+                id: sid,
+                name: window.studentData?.name || '',
+                school: window.studentData?.school || '',
+                gov: window.studentData?.gov || '',
+                points: points,
+                correct: correct,
+                sessionId: window.todaySession,
+                updatedAt: serverTimestamp()
+            });
+        } catch(e) { console.error('saveLiveScore error:', e); }
+    };
+
+    window.__saveFinalScore = async function(points, correct, percent) {
+        try {
+            const sid = localStorage.getItem('htma_student_id');
+            await deleteDoc(doc(firestore, "live_scores", sid));
+            await setDoc(doc(firestore, "final_scores", sid), {
+                id: sid,
+                name: window.studentData?.name || '',
+                school: window.studentData?.school || '',
+                gov: window.studentData?.gov || '',
+                points: points,
+                correct: correct,
+                percent: percent,
+                sessionId: window.todaySession,
+                date: new Date().toLocaleString('ar-EG')
+            });
+        } catch(e) { console.error('saveFinalScore error:', e); }
+    };
+
+    console.log('✅ Firebase جاهز');
+} catch (err) {
+    console.error('❌ Firebase فشل في التحميل:', err);
+    window.firebaseReady = false;
+}
+</script>
+
+</body>
+</html>
